@@ -12,6 +12,9 @@ function App() {
         <p>
           TESTNG <code>pipeline</code> and save to reload.
         </p>
+        <p>
+          TESTNG <code>branch test passed!</code> and save to reload.
+        </p>
         <a
           className="App-link"
           href="https://reactjs.org"
