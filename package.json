@@ -1,0 +1,22 @@
+{
+  "name": "oly_dudes_pl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michalpzarzycki/oly_dudes_pl.git"
+  },
+  "author": "Michal Zarzycki",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michalpzarzycki/oly_dudes_pl/issues"
+  },
+  "homepage": "https://github.com/michalpzarzycki/oly_dudes_pl#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
