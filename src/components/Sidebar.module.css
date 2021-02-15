@@ -1,0 +1,6 @@
+.mainDiv {
+    max-width: 250px;
+    background-color: rgb(32, 30, 30);
+    color: white;
+    height: calc(100vh - 60px);
+}
