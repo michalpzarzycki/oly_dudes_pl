@@ -6,17 +6,20 @@ import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(true)
 
   if (isLoggedIn) {
     return (
       <Router>
+        <Navbar />
+        <div className="body">
+        <Sidebar />
         <Switch>
           <div className="App">
-            <Route exact path="/login" component={Navbar} />
             <Route path="/dashboard" component={Dashboard} />
           </div>
         </Switch>
+        </div>
       </Router>
     )
   } else {
