@@ -1,11 +1,8 @@
-import React from 'react'
-
+import WeightGraph from '../components/WeightGraph'
 
 function Dashboard() {
     return (
-        <div>
-          DASHBARD
-        </div>
+          <WeightGraph />
     )
 }
 
