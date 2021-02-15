@@ -1,0 +1,47 @@
+.mainDiv {
+    height: 60px;
+    background-color: rgb(41, 40, 40);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+.search {
+    min-width: 120px;
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid white;
+    background-color: transparent;
+    outline: none;
+    padding-left: 20px;
+    color: white;
+}
+.functions {
+    display: flex;
+    list-style-type: none;
+}
+.functions > li {
+    width: 30px;
+    height: 30px;
+    background-color: rgb(92, 33, 92);
+    border-radius: 50%;
+    margin: 5px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("https://www.pngfind.com/pngs/m/85-857091_png-file-settings-icon-transparent-png.png");
+}
+img {
+    object-fit: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+
+
+@media (max-width: 600px) {
+    .search {
+      display: none;
+    }
+  }
