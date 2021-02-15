@@ -1,4 +1,5 @@
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import Dashboard from './screens/Dashboard'
 import './App.css';
 
 function App() {
@@ -6,8 +7,7 @@ function App() {
         <Router>
           <Switch>
             <div className="App">
-              <Route exact path="/" component={} />
-              <Route path="/dashboard" component={} />
+              <Route path="/dashboard" component={Dashboard} />
             </div>
         </Switch>
       </Router>
