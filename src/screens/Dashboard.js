@@ -9,7 +9,6 @@ function Dashboard() {
           <Line />
           <Bar />
           <Doughnut />
-
         </div>
     )
 }
