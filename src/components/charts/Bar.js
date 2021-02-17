@@ -19,6 +19,16 @@ export default function Bar() {
                 ]
             },
             options: {
+                legend: {
+                    display: false
+                },
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            display: false 
+                        }
+                    }]
+                }
             }
         });
     }, [])
