@@ -10,15 +10,22 @@ export default function Doughnut() {
         new Chart(myChartRef, {
             type: "doughnut",
             data: {
-                labels: ["Jan", "Feb", "March"],
                 datasets: [
                     {
                         label: "Sales",
-                        data: [86, 67, 91],
-                    }
+                        data: [90,10],
+                        backgroundColor:["rgba(215,215,0,0.2)", "rgba(0,0,0,0.2)"],
+                        borderColor:["rgba(215,215,0,1)", "rgba(0,0,0,1)"]
+                    }, 
+                
                 ]
             },
             options: {
+                legend: {
+                    display: false
+                },
+                cutoutPercentage: 92
+
             }
         });
     }, [])
