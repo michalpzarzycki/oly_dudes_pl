@@ -11,6 +11,7 @@ function App() {
   if (isLoggedIn) {
     return (
       <Router>
+        <div className="screen">
         <Navbar />
         <div className="body">
         <Sidebar />
@@ -19,6 +20,7 @@ function App() {
             <Route path="/dashboard" component={Dashboard} />
           </div>
         </Switch>
+        </div>
         </div>
       </Router>
     )
