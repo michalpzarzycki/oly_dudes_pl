@@ -1,0 +1,13 @@
+.mainDiv {
+    display: flex;
+    flex-direction: column;
+    
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+}
+
+.options {
+    display: flex;
+    justify-content: space-around;
+}
