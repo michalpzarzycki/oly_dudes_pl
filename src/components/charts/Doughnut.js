@@ -3,7 +3,7 @@ import Chart from "chart.js";
 import 'chartjs-plugin-labels';
 import styles from './Doughnut.module.css';
 
-export default function Doughnut() {
+export default function Doughnut({title="", achieved="0"}) {
     const chartRef = React.createRef();
     useEffect(()=>{
         
@@ -14,43 +14,26 @@ export default function Doughnut() {
             data: {
                 datasets: [
                     {
-                        data: [90,10],
-                        backgroundColor:["rgba(215,215,0,0.2)", "rgba(0,0,0,0.2)"],
-                        borderColor:["rgba(215,215,0,1)", "rgba(0,0,0,1)"],      
+                        label: 'My First Dataset',
+                        data: [Number(achieved),100-Number(achieved)],
+                        backgroundColor:["rgba(0,0,0,0.2)", "rgba(215,215,0,0.2)"],
+                        borderColor:["rgba(0,0,0,1)", "rgba(215,215,0,1)"],      
                     }, 
                 
                 ]
             },
-          
                 options: {
-                    plugins: {
-                        doughnutlabel: {
-                            labels: [
-                                {
-                                   
-                                  
-                                }
-                            ]
-                        }
-                    }
-                
-             
-                // legend: {
-                //     display: false
-                // },
-                // cutoutPercentage: 92,
-                // centerText: {
-                //     display: true,
-                //     text: "280"
-                // }
-
+                    title: {
+                        display: true,
+                        text: title
+                      },
+                      cutoutPercentage: 92,
             }
         });
     }, [])
   
         return (
             <div className={styles.mainDiv}>
-                <div className={styles.value}>90</div>
                 <canvas
                     id="myChart"
                     ref={chartRef}

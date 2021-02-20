@@ -1,6 +1,6 @@
 .mainDiv {
-    width: 200px;
-    height: 200px;
+    width: auto;
+    padding: 10px;
     position: relative;
 }
 .value {

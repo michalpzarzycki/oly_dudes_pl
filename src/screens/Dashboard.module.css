@@ -1,0 +1,14 @@
+.mainDiv {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  
+    
+}
+
+.goalSection {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
