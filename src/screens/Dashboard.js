@@ -14,6 +14,11 @@ function Dashboard() {
           <GoalGraph goalTitle="Clean&Jerk" achieved="50"/>
           <GoalGraph goalTitle="Back squat" achieved="35"/>
           </div>
+          <div className={styles.goalSection}>
+          <GoalGraph goalTitle="Snatch" achieved="85"/>
+          <GoalGraph goalTitle="Clean&Jerk" achieved="50"/>
+          <GoalGraph goalTitle="Back squat" achieved="35"/>
+          </div>
      
           <Line />
           <Bar />
