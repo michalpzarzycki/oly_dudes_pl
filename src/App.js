@@ -1,33 +1,34 @@
 import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
 import Dashboard from './screens/Dashboard'
+import Login from './screens/Login'
 import './App.css';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   if (isLoggedIn) {
     return (
       <Router>
         <div className="screen">
-        <Navbar />
-        <div className="body">
-        <Sidebar />
-        <Switch>
-          <div className="App">
-            <Route path="/dashboard" component={Dashboard} />
+          <Navbar />
+          <div className="body">
+            <Sidebar />
+            <Switch>
+              <div className="App">
+                <Route exact path="/" component={Login} />
+              </div>
+            </Switch>
           </div>
-        </Switch>
-        </div>
         </div>
       </Router>
     )
   } else {
     return (
       <Router>
-        <Route path="/" component={Navbar} />
+        <Route path="/" component={Login} />
       </Router>
     )
   }
