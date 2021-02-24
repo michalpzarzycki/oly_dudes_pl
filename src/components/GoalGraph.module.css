@@ -1,7 +1,7 @@
 .mainDiv {
     display: flex;
     flex-direction: column;
-    
+    min-width: 180px;
     border-style: solid;
     border-color: black;
     border-width: 1px;
