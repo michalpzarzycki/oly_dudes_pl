@@ -47,7 +47,8 @@ const useStyles = makeStyles((theme) => ({
 
 function Login() {
     const classes = useStyles();
-
+const handleChange = () => {}
+const handleSubmit = () => {}
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -60,7 +61,7 @@ function Login() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} noValidate onSubmit={handleSubmit}>
             <TextField
               variant="outlined"
               margin="normal"
@@ -71,6 +72,7 @@ function Login() {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={handleChange}
             />
             <TextField
               variant="outlined"
@@ -82,6 +84,7 @@ function Login() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={handleChange}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -108,8 +111,6 @@ function Login() {
                 </Link>
               </Grid>
             </Grid>
-            <Box mt={5}>
-            </Box>
           </form>
         </div>
       </Grid>
