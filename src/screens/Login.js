@@ -11,8 +11,9 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
+import FacebookIcon from '@material-ui/icons/Facebook';
 import { makeStyles } from '@material-ui/core/styles';
-import {signInWithEmailAndPassword} from '../firebase/firebase'
+import {signInWithEmailAndPassword} from '../firebase/firebase';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -106,6 +107,24 @@ const handleSubmit = (event) => {
             >
               Sign In
             </Button>
+            <Button 
+              variant="contained" 
+              color="secondary" 
+              fullWidth
+              startIcon={<FacebookIcon />}
+              className={classes.submit}
+              >
+                SIGN IN WITH GOOGLE
+              </Button>
+              <Button 
+                variant="contained"
+                color="primary"
+                fullWidth
+                startIcon={<FacebookIcon />}
+                className={classes.submit}
+              >
+                SIGN IN WITH FACEBOOK
+              </Button>
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
