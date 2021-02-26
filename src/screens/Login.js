@@ -12,7 +12,7 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-
+import {signInWithEmailAndPassword} from '../firebase/firebase'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -53,7 +53,8 @@ const handleChange = (event) => {
 }
 const handleSubmit = (event) => {
     event.preventDefault()
-    console.log("USER", user)
+      signInWithEmailAndPassword(user.email, user.password)
+    
 }
   return (
     <Grid container component="main" className={classes.root}>
