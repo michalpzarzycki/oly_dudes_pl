@@ -5,6 +5,7 @@ import Login from './screens/Login'
 import './App.css';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
+import Register from './screens/Register';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -18,7 +19,7 @@ function App() {
             <Sidebar />
             <Switch>
               <div className="App">
-                <Route exact path="/" component={Login} />
+                <Route exact path="/" component={Dashboard} />
               </div>
             </Switch>
           </div>
@@ -28,7 +29,8 @@ function App() {
   } else {
     return (
       <Router>
-        <Route path="/" component={Login} />
+        <Route exact path="/" component={Login} />
+        <Route path="/register" component={Register} />
       </Router>
     )
   }
