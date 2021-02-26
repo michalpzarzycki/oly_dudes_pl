@@ -14,6 +14,7 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import { makeStyles } from '@material-ui/core/styles';
 import { signInWithEmailAndPassword } from '../firebase/email-signin'
 import { signInWithGmailPopup } from '../firebase/google-signin'
+import { signInWithFacebookPopup } from '../firebase/facebook-signin'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -123,6 +124,7 @@ function Login() {
               fullWidth
               startIcon={<FacebookIcon />}
               className={classes.submit}
+              onClick={signInWithFacebookPopup}
             >
               SIGN IN WITH FACEBOOK
               </Button>

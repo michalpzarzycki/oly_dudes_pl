@@ -11,32 +11,6 @@ var firebaseConfig = {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   
-  export function signInWithEmailAndPassword(email, password) {
-    return new Promise((resolve, reject) => {
-      firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then((result) => {
-          console.log("RESOLVE", result)
-        resolve(result)
-      })
-      .catch((err) => {
-          console.log("REJECT", err)
-        reject(err)
-      })
-    })
-  }
-  export function signInWithGmailPopup() {
-    return new Promise((resolve, reject) => {
-        let provider = new firebase.auth.GoogleAuthProvider();
-        firebase.auth().signInWithPopup(provider)
-        .then((data)=>{
-            var user = data.user;
-            console.log(user)
-            resolve(data)
-        }).catch(err => {
-            reject(err)
-        })
-    })
-}
+ 
+
   export default firebase;
