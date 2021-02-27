@@ -12,7 +12,8 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-
+import { connect } from 'react-redux'
+import { signIn } from '../actions'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -45,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-function Login() {
+function Login({tryLog}) {
     const [user, setUser] = useState({email:'', password:''})
     const classes = useStyles();
 const handleChange = (event) => {
@@ -105,6 +106,7 @@ const handleSubmit = (event) => {
             >
               Sign In
             </Button>
+            <Button onClick={tryLog}>CLICK</Button>
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
@@ -124,4 +126,9 @@ const handleSubmit = (event) => {
   );
 }
 
-export default Login
+const mapDispatchToProps = (dispatch, user="Michal Zarzycki") => {
+ return {
+  tryLog: () => dispatch(signIn(user))
+ } 
+}
+export default connect(null,mapDispatchToProps)(Login)
