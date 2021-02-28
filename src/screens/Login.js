@@ -13,7 +13,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux'
-import { signIn } from '../actions'
+import { signInRequest, signInSuccess, singInFailure } from '../actions'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-function Login({tryLog}) {
+function Login({signInUser}) {
     const [user, setUser] = useState({email:'', password:''})
     const classes = useStyles();
 const handleChange = (event) => {
@@ -55,6 +55,7 @@ const handleChange = (event) => {
 const handleSubmit = (event) => {
     event.preventDefault()
     console.log("USER", user)
+    signInUser()
 }
   return (
     <Grid container component="main" className={classes.root}>
@@ -106,7 +107,6 @@ const handleSubmit = (event) => {
             >
               Sign In
             </Button>
-            <Button onClick={tryLog}>CLICK</Button>
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
@@ -125,10 +125,27 @@ const handleSubmit = (event) => {
     </Grid>
   );
 }
-
-const mapDispatchToProps = (dispatch, user="Michal Zarzycki") => {
+const mockedFirebaseLogin = () => {
+  return new Promise((resolve, reject) => {
+    let isLoggedIn = true;
+    return isLoggedIn ? resolve("MICHAL ZARZYCKI") : reject("ERROR MESSAGE");
+  })
+}
+const mapDispatchToProps = (dispatch) => {
  return {
-  tryLog: () => dispatch(signIn(user))
+  signInUser: () => {
+        //dispatch request
+        dispatch(signInRequest())
+        mockedFirebaseLogin().then(data => {
+          dispatch(signInSuccess(data))
+        }).catch(err => {
+          dispatch(singInFailure(err))
+        })
+
+
+  }
  } 
 }
+
+
 export default connect(null,mapDispatchToProps)(Login)
