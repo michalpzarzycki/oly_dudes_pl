@@ -12,7 +12,8 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-
+import { useDispatch } from 'react-redux'
+import { signInRequest, signInSuccess, singInFailure } from '../actions'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -45,8 +46,9 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-function Login() {
+function Login({}) {
     const [user, setUser] = useState({email:'', password:''})
+    const dispatch = useDispatch();
     const classes = useStyles();
 const handleChange = (event) => {
     setUser({...user, [event.target.name]: event.target.value})
@@ -54,6 +56,22 @@ const handleChange = (event) => {
 const handleSubmit = (event) => {
     event.preventDefault()
     console.log("USER", user)
+    signInUser()
+}
+const signInUser = () => {
+  //dispatch request
+  dispatch(signInRequest())
+  mockedFirebaseLogin().then(data => {
+    dispatch(signInSuccess(data))
+  }).catch(err => {
+    dispatch(singInFailure(err))
+  })
+}
+const mockedFirebaseLogin = () => {
+  return new Promise((resolve, reject) => {
+    let isLoggedIn = true;
+    return isLoggedIn ? resolve("MICHAL ZARZYCKI") : reject("ERROR MESSAGE");
+  })
 }
   return (
     <Grid container component="main" className={classes.root}>
@@ -124,4 +142,8 @@ const handleSubmit = (event) => {
   );
 }
 
-export default Login
+  
+
+
+
+export default Login;
