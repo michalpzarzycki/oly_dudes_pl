@@ -11,8 +11,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-
-
+import {useFormValidation} from '../hooks/useFormValidation'
+import registerValidate from '../validate/registerValidate'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -34,8 +34,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 function Register() {
+    const { handleChange, handleSubmit, errors, values} = useFormValidation(signUpUser, registerValidate)
     const classes = useStyles();
-
+    function signUpUser() {
+      console.log("USERSIGNEDUP")
+    }
+    
     return (
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -46,7 +50,7 @@ function Register() {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} noValidate onSubmit={handleSubmit}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
