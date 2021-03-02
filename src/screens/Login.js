@@ -1,4 +1,3 @@
-import React, {useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -14,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch } from 'react-redux'
 import { signInRequest, signInSuccess, singInFailure } from '../actions'
+import { useFormValidation } from '../hooks/useFormValidation'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -46,33 +46,27 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
+  const mockedFirebaseLogin = () => {
+    return new Promise((resolve, reject) => {
+      let isLoggedIn = true;
+      return isLoggedIn ? resolve("MICHAL ZARZYCKI") : reject("ERROR MESSAGE");
+    })
+  }
 function Login({}) {
-    const [user, setUser] = useState({email:'', password:''})
+    const {handleSubmit, handleChange, errors, values} = useFormValidation(signInUser)
     const dispatch = useDispatch();
     const classes = useStyles();
-const handleChange = (event) => {
-    setUser({...user, [event.target.name]: event.target.value})
-}
-const handleSubmit = (event) => {
-    event.preventDefault()
-    console.log("USER", user)
-    signInUser()
-}
-const signInUser = () => {
-  //dispatch request
-  dispatch(signInRequest())
-  mockedFirebaseLogin().then(data => {
-    dispatch(signInSuccess(data))
-  }).catch(err => {
-    dispatch(singInFailure(err))
-  })
-}
-const mockedFirebaseLogin = () => {
-  return new Promise((resolve, reject) => {
-    let isLoggedIn = true;
-    return isLoggedIn ? resolve("MICHAL ZARZYCKI") : reject("ERROR MESSAGE");
-  })
-}
+
+    function signInUser() {
+      //dispatch request
+      dispatch(signInRequest())
+      mockedFirebaseLogin().then(data => {
+        dispatch(signInSuccess(data))
+      }).catch(err => {
+        dispatch(singInFailure(err))
+      })
+    }
+
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -97,6 +91,8 @@ const mockedFirebaseLogin = () => {
               autoComplete="email"
               autoFocus
               onChange={handleChange}
+              error={errors.mail}
+
             />
             <TextField
               variant="outlined"
@@ -109,6 +105,7 @@ const mockedFirebaseLogin = () => {
               id="password"
               autoComplete="current-password"
               onChange={handleChange}
+              error={errors.pass}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
