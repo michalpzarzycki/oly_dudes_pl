@@ -14,11 +14,12 @@ useEffect(() => {
       callback();
     }
   }, [isSubmit]);
-
+useEffect(() => {
+    setErrors(() => validate(values))
+}, [values])
     const handleChange = (event) => {
         console.log("UFV handlechange", event.target.value)
         setValues((values) => ({...values, [event.target.name]: event.target.value}))
-        setErrors({...validate(values)})
     }
     const handleSubmit = (event) => {
       console.log("USE FORM VALIDATION ERRORS", errors)

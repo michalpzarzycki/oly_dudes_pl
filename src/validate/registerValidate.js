@@ -1,6 +1,6 @@
 export default function registerValidate(values) {
     const errors = { firstName:'', lastName:'', email:'', password:''}
-    console.log(values)
+    console.log("VAL",values)
 
     if(values?.firstName?.length<=3) errors.firstName = "LONGER NAME PLEASE"
     if(values?.lastName?.length<=3) errors.lastName = "LONGER LAST NAME PLEASE"
