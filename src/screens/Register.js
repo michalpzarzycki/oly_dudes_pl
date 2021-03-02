@@ -62,6 +62,8 @@ function Register() {
                   id="firstName"
                   label="First Name"
                   autoFocus
+                  error={errors.firstName}
+                  onChange={handleChange}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -73,6 +75,8 @@ function Register() {
                   label="Last Name"
                   name="lastName"
                   autoComplete="lname"
+                  error={errors.lastName}
+                  onChange={handleChange}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -84,6 +88,8 @@ function Register() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  error={errors.email}
+                  onChange={handleChange}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -96,6 +102,8 @@ function Register() {
                   type="password"
                   id="password"
                   autoComplete="current-password"
+                  error={errors.password}
+                  onChange={handleChange}
                 />
               </Grid>
               <Grid item xs={12}>
