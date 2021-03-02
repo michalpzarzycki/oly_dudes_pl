@@ -1,17 +1,10 @@
 import { useEffect, useState } from 'react'
 
 
-function sampleValidateFunction(values) {
-    let errors = {mail:'', pass:''}
-    console.log(values)
-    if(values?.email?.length<=3)  errors.mail = "error"
-    if(values?.password?.length<=3)  errors.pass = "error"
-
-    return errors;
-}
 
 
-export function useFormValidation(callback, validate=sampleValidateFunction) {
+
+export function useFormValidation(callback, validate) {
 const [errors, setErrors] = useState({});
 const [values, setValues] = useState({});
 const [isSubmit, setIsSubmit] = useState(false);

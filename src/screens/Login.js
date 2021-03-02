@@ -14,7 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch } from 'react-redux'
 import { signInRequest, signInSuccess, singInFailure } from '../actions'
 import { useFormValidation } from '../hooks/useFormValidation'
-
+import loginValidate from '../validate/loginValidate'
 const useStyles = makeStyles((theme) => ({
     root: {
       height: '100vh',
@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
     })
   }
 function Login({}) {
-    const {handleSubmit, handleChange, errors, values} = useFormValidation(signInUser)
+    const {handleSubmit, handleChange, errors, values} = useFormValidation(signInUser, loginValidate)
     const dispatch = useDispatch();
     const classes = useStyles();
 
