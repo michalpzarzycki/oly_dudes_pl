@@ -10,8 +10,9 @@ const [values, setValues] = useState({});
 const [isSubmit, setIsSubmit] = useState(false);
 
 useEffect(() => {
+    if(isSubmit)  callback()
+
     if (Object.keys(errors).length === 0 && isSubmit) {
-      callback();
     }
  
   }, [isSubmit]);
