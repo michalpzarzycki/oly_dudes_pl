@@ -13,6 +13,7 @@ useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmit) {
       callback();
     }
+ 
   }, [isSubmit]);
 useEffect(() => {
     setErrors(() => validate(values))
@@ -21,6 +22,7 @@ useEffect(() => {
         setValues((values) => ({...values, [event.target.name]: event.target.value}))
     }
     const handleSubmit = (event) => {
+        console.log("SUBMIT")
         event.preventDefault();
         setIsSubmit(true)
     }

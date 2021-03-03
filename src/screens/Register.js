@@ -10,12 +10,9 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-
-
-
 import { useFormValidation } from '../hooks/useFormValidation'
 import registerValidate from '../validate/registerValidate'
-
+import { signUpUserWithEmailAndPassword } from '../firebase/signup'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -37,11 +34,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 function Register() {
-  const { handleChange, handleSubmit, errors, values } = useFormValidation(signUpUser, registerValidate)
+  const { handleChange, handleSubmit, errors, values } = useFormValidation(() => signUpUserWithEmailAndPassword(values.email, values.password), registerValidate)
   const classes = useStyles();
-  function signUpUser() {
-    console.log("USERSIGNEDUP")
-  }
+ 
 
   return (
     <Container component="main" maxWidth="xs">
