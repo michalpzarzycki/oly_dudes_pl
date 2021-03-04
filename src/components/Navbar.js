@@ -14,7 +14,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import {signOut} from '../firebase/signout'
+import { signOut } from '../firebase/signout'
 import { useDispatch } from 'react-redux'
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -161,7 +161,7 @@ export default function PrimarySearchAppBar() {
           aria-haspopup="true"
           color="inherit"
         >
-          <AccountCircle />
+          <Avatar src='https://i.imgur.com/qVHJkVM.jpg' />
         </IconButton>
         <p>Profile</p>
       </MenuItem>
@@ -216,7 +216,7 @@ export default function PrimarySearchAppBar() {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle />
+              <Avatar src='https://i.imgur.com/qVHJkVM.jpg' />
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>
