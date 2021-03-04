@@ -65,12 +65,8 @@ function Login({}) {
 
     function signInUser() {
       //dispatch request
-      dispatch(signInRequest())
-      mockedFirebaseLogin().then(data => {
-        dispatch(signInSuccess(data))
-      }).catch(err => {
-        dispatch(singInFailure(err))
-      })
+      signInWithEmailAndPassword(values.email, values.password,dispatch)
+      console.log("signedIN")
     }
 
   return (
@@ -131,7 +127,7 @@ function Login({}) {
               color="secondary"
               fullWidth
               className={classes.submit}
-              onClick={signInWithGmailPopup}
+              onClick={() => signInWithGmailPopup(dispatch)}
             >
               SIGN IN WITH GOOGLE
               </Button>
@@ -141,7 +137,7 @@ function Login({}) {
               fullWidth
               startIcon={<FacebookIcon />}
               className={classes.submit}
-              onClick={signInWithFacebookPopup}
+              onClick={() => signInWithFacebookPopup(dispatch)}
             >
               SIGN IN WITH FACEBOOK
               </Button>

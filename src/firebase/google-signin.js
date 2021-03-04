@@ -11,7 +11,7 @@ export function signInWithGmailPopup(dispatch=()=>{}) {
             dispatch(signInSuccess(user))
             resolve(data)
         }).catch(err => {
-            dispatch(signInFailure(err))
+            dispatch(singInFailure(err))
             reject(err)
         })
     })

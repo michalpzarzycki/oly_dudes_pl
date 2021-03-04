@@ -7,11 +7,14 @@ import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import Register from './screens/Register';
 import { useSelector } from 'react-redux'
+import user from './reducers/user';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const userData = useSelector(state => state)
-
-  if (isLoggedIn) {
+  useEffect(() => {
+    console.log("USER DATA APP", userData)
+  })
+  if (userData?.user?.loggedIn===true) {
     return (
       <Router>
         <div className="screen">
