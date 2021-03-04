@@ -39,6 +39,20 @@ const user = (state={}, action) => {
           user:action.payload,
           loadingSignUp: false
         }
+        case 'SIGN_OUT_REQUEST':
+          return {
+              ...state,
+          }
+          case 'SIGN_OUT_SUCCESS':
+            return {
+                ...state,
+             loggedIn: payload
+            }
+            case 'SIGN_OUT_FAILURE':
+          return {
+              ...state,
+            loggedIn: payload
+          }
     default:
       return state
   }
