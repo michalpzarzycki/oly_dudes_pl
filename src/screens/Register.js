@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -38,9 +39,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 function Register() {
+  const history = useHistory()
   const dispatch = useDispatch()
   const userData = useSelector(state => state.user)
-
+  useEffect(()=>{
+    if(userData.registerSuccess) {
+      console.log("REGISTERED")
+      history.push('/')
+    }
+  }, [userData.registerSuccess])
   
 
   const { handleChange, handleSubmit, errors, values } = useFormValidation(() => signUpUserWithEmailAndPassword(values.email, values.password, dispatch), registerValidate)

@@ -1,6 +1,7 @@
 import firebase from './firebase';
 import { signUpRequest, signUpSuccess, singUpFailure } from '../actions'
 
+
 export function signUpUserWithEmailAndPassword(email, password, dispatch) {
     dispatch(signUpRequest())
     return new Promise((resolve, reject) => {
