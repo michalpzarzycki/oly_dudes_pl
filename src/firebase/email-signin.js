@@ -6,11 +6,11 @@ export function signInWithEmailAndPassword(email, password) {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
-          console.log("RESOLVE", result)
+          console.log(result)
         resolve(result)
       })
       .catch((err) => {
-          console.log("REJECT", err)
+          console.log(err)
         reject(err)
       })
     })

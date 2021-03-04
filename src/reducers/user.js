@@ -17,18 +17,21 @@ const user = (state={}, action) => {
       return {
           ...state,
         user:action.payload,
-        loggedIn: false
+        loggedIn: false,
+        registerSuccess: false
       }
       case 'SIGN_UP_REQUEST':
         return {
             ...state,
-          loadingSignUp: true
+          loadingSignUp: true,
+          registerSuccess: false
         }
         case 'SIGN_UP_SUCCESS':
           return {
               ...state,
             user:action.payload,
-            loadingSignUp: false
+            loadingSignUp: false,
+            registerSuccess: true
           }
           case 'SIGN_UP_FAILURE':
         return {
