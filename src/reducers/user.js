@@ -1,4 +1,12 @@
-const user = (state={}, action) => {
+const initialState = {
+  loggedIn: false,
+  registerSuccess: false,
+  loadingSignUp: false,
+
+}
+
+
+const user = (state=initialState, action) => {
     console.log("ACTION")
     console.log(action.type, action.payload)
   switch (action.type) {
@@ -47,7 +55,7 @@ const user = (state={}, action) => {
             return {
                 ...state,
               user:action.payload.user,
-             loggedIn: false
+              loggedIn: false
             }
             case 'SIGN_OUT_FAILURE':
           return {
