@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -40,15 +39,9 @@ const useStyles = makeStyles((theme) => ({
 function Register() {
   const dispatch = useDispatch()
   const userData = useSelector(state => state.user)
-
-  
-
   const { handleChange, handleSubmit, errors, values } = useFormValidation(() => signUpUserWithEmailAndPassword(values.email, values.password, dispatch), registerValidate)
   const classes = useStyles();
 
-  
-
- 
   if(userData.loadingSignUp===true) {
     return <LinearLoader />
   } else {
