@@ -46,12 +46,13 @@ const user = (state={}, action) => {
           case 'SIGN_OUT_SUCCESS':
             return {
                 ...state,
-             loggedIn: payload
+              user:action.payload.user,
+             loggedIn: false
             }
             case 'SIGN_OUT_FAILURE':
           return {
               ...state,
-            loggedIn: payload
+            loggedIn: true
           }
     default:
       return state

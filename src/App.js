@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Dashboard from './screens/Dashboard'
 import Login from './screens/Login'
 import './App.css';
@@ -7,13 +7,11 @@ import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import Register from './screens/Register';
 import { useSelector } from 'react-redux'
-import user from './reducers/user';
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const userData = useSelector(state => state)
   useEffect(() => {
     console.log("USER DATA APP", userData)
-  })
+  }, [userData.user.loggedIn])
   if (userData?.user?.loggedIn===true) {
     return (
       <Router>

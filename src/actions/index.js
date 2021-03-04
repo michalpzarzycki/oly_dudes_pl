@@ -41,17 +41,19 @@ export const singUpFailure = (error) => ({
     }
 })
 export const signOutRequest = () => ({
-    type: 'SIGN_UP_REQUEST',
+    type: 'SIGN_OUT_REQUEST',
 
   })
 
 export const signOutSuccess = () => ({
-    type: 'SIGN_UP_SUCCESS',
-    payload: false,
+    type: 'SIGN_OUT_SUCCESS',
+    payload: {
+        user:{}
+    },
     
 })
 
 export const singOutFailure = () => ({
-    type: 'SIGN_UP_FAILURE',
+    type: 'SIGN_OUT_FAILURE',
     payload: true
 })
