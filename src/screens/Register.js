@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -39,9 +39,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 function Register() {
+  const [selectedFile, setSelectedFile] = useState(null);
   const history = useHistory()
   const dispatch = useDispatch()
   const userData = useSelector(state => state.user)
+  useEffect(()=>{
+    console.log("SELECTED FILE 😻")
+    console.log(selectedFile, '🔥' )
+     
+  }, [selectedFile])
   useEffect(() => {
     if (userData.registerSuccess) {
       history.push('/')
@@ -138,6 +144,7 @@ function Register() {
                    <input
                       type="file"
                       hidden
+                      onChange={(event) => setSelectedFile(event.target.files[0])}
                     />
                   </Button>
                 </Grid>
