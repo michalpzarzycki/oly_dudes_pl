@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,12 +12,12 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { useFormValidation } from '../hooks/useFormValidation'
-import registerValidate from '../validate/registerValidate'
+import { useFormValidation } from '../hooks/useFormValidation';
+import registerValidate from '../validate/registerValidate';
 import { useDispatch, useSelector } from 'react-redux';
 import LinearLoader from '../components/loaders/LinearLoader';
-import { signUpUserWithEmailAndPassword } from '../firebase/signup'
-
+import { signUpUserWithEmailAndPassword } from '../firebase/signup';
+import {handleUpload} from '../firebase/storage'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -39,15 +39,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 function Register() {
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [file, setFile] = useState(null);
   const history = useHistory()
   const dispatch = useDispatch()
   const userData = useSelector(state => state.user)
   useEffect(()=>{
     console.log("SELECTED FILE 😻")
-    console.log(selectedFile, '🔥' )
+    console.log( '🔥' , file)
      
-  }, [selectedFile])
+  }, [file])
   useEffect(() => {
     if (userData.registerSuccess) {
       history.push('/')
@@ -55,12 +55,11 @@ function Register() {
   }, [userData.registerSuccess])
 
 
-  const { handleChange, handleSubmit, errors, values } = useFormValidation(() => signUpUserWithEmailAndPassword(values.email, values.password, dispatch), registerValidate)
+  const { handleChange, handleSubmit, errors, values } = useFormValidation(() => signUpUserWithEmailAndPassword(values.email, values.password, dispatch).then(()=>{if(file) handleUpload(values.email, file)}), registerValidate)
   const classes = useStyles();
-
-
-
-
+  const handleImageAsFile = (event) => {
+    setFile(event.target.files[0])
+}
   if (userData.loadingSignUp === true) {
     return <LinearLoader />
   } else {
@@ -144,7 +143,7 @@ function Register() {
                    <input
                       type="file"
                       hidden
-                      onChange={(event) => setSelectedFile(event.target.files[0])}
+                      onChange={(event) => handleImageAsFile(event)}
                     />
                   </Button>
                 </Grid>
@@ -179,5 +178,4 @@ function Register() {
     );
   }
 }
-
 export default Register
