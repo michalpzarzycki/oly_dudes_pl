@@ -19,3 +19,24 @@ export const singInFailure = (error) => ({
         error
     }
 })
+export const signUpRequest = () => ({
+    type: 'SIGN_UP_REQUEST',
+    payload: {
+        loadingSignUp: true
+    },
+  })
+
+export const signUpSuccess = (user) => ({
+    type: 'SIGN_UP_SUCCESS',
+    payload: {
+        data: user,
+        loadingSignUp: false,
+    }
+})
+
+export const singUpFailure = (error) => ({
+    type: 'SIGN_UP_FAILURE',
+    payload: {
+        error
+    }
+})

@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -11,11 +11,11 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-
-
-
 import { useFormValidation } from '../hooks/useFormValidation'
 import registerValidate from '../validate/registerValidate'
+import { useDispatch, useSelector } from 'react-redux';
+import LinearLoader from '../components/loaders/LinearLoader';
+import { signUpUserWithEmailAndPassword } from '../firebase/signup'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -38,13 +38,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 function Register() {
-  const { handleChange, handleSubmit, errors, values } = useFormValidation(signUpUser, registerValidate)
-  const classes = useStyles();
-  function signUpUser() {
-    console.log("USERSIGNEDUP")
-  }
+  const dispatch = useDispatch()
+  const userData = useSelector(state => state.user)
 
+  
+
+  const { handleChange, handleSubmit, errors, values } = useFormValidation(() => signUpUserWithEmailAndPassword(values.email, values.password, dispatch), registerValidate)
+  const classes = useStyles();
+
+  
+
+ 
+  if(userData.loadingSignUp===true) {
+    return <LinearLoader />
+  } else {
   return (
+    
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
@@ -141,6 +150,7 @@ function Register() {
       </div>
     </Container>
   );
+  }
 }
 
 export default Register
