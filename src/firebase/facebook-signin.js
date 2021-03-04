@@ -7,7 +7,6 @@ export function signInWithFacebookPopup() {
     return new Promise((resolve, reject) => {
         firebase.auth().signInWithPopup(provider)
         .then(data => {
-            console.log(data.user)
             resolve(data)
         }).catch(err => {
             reject(err)

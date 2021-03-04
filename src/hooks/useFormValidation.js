@@ -23,7 +23,6 @@ useEffect(() => {
         setValues((values) => ({...values, [event.target.name]: event.target.value}))
     }
     const handleSubmit = (event) => {
-        console.log("SUBMIT")
         event.preventDefault();
         setIsSubmit(true)
     }

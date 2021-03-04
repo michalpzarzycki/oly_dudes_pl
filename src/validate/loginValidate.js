@@ -1,6 +1,6 @@
 export default function loginValidate(values) {
     let errors = {mail:'', pass:''}
-    console.log(values)
+    (values)
     if(values?.email?.length<=3)  errors.mail = "error"
     if(values?.password?.length<=3)  errors.pass = "error"
 

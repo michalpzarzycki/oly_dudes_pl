@@ -9,7 +9,6 @@ export function signUpUserWithEmailAndPassword(email, password, dispatch) {
             .auth()
             .createUserWithEmailAndPassword(email, password)
             .then((userCredential) => {
-                console.log("SUCCESS")
                 dispatch(signUpSuccess())
                 // Signed in 
                 var user = userCredential.user;
@@ -18,7 +17,6 @@ export function signUpUserWithEmailAndPassword(email, password, dispatch) {
             })
             .catch((error) => {
                 dispatch(singUpFailure(error))
-                console.log("FAIL")
                 var errorCode = error.code;
                 var errorMessage = error.message;
                 reject(error)

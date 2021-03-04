@@ -44,7 +44,6 @@ function Register() {
   const userData = useSelector(state => state.user)
   useEffect(()=>{
     if(userData.registerSuccess) {
-      console.log("REGISTERED")
       history.push('/')
     }
   }, [userData.registerSuccess])
